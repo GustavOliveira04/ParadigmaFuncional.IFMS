@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS convencional Parametros</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>Soma de Dois Números</h1>
     Número 1: <input type="text" id="num1"><br>
     Número 2: <input type="text" id="num1"><br>
 <button type="button" onclick="somar()">Somar</button>
+
 <script>
-function somar() {
+const somar = () => {
     let n1 = parseFloat(document.getElementById("num1").value)
     let n2 = parseFloat(document.getElementById("num2").value)
-        return alert("Soma:"+(n1+n2));
+    alert("A soma é:"+(numero1 + numero2));
 }
 </script>
 </body>
-</html>
+</html> 
