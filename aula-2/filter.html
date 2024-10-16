@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+</head>
+<body>
+    <h1>Clientes Maiores de idade:</h1>
+    <ul id="lista-maioridade"></ul>
+
+<script>
+const clientes = [
+    {"nome":"João","idade":26},
+	{"nome":"Carlos","idade":55},
+	{"nome":"Manoel","idade":5},
+	{"nome":"Paula","idade":2}
+];
+
+const maioridade = clientes.filter(({idade}) => idade > 18);
+
+console.log(maioridade);
+
+</script>
+</body>
+</html>
