@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercício Barco</title>
+    <title>Document</title>
 </head>
 <body>
-    
+    <h1>Embarcações miúdas:</h1>
+    <ul id="embarcacoes-miudas"></ul>
+
+    <script>
+        let embarcacoes = [
+            { comprimento: 6, potenciaMotor: 60, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 8, potenciaMotor: 70, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 9, potenciaMotor: 55, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 7, potenciaMotor: 60, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 6, potenciaMotor: 80, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 8, potenciaMotor: 45, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 9, potenciaMotor: 65, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 7, potenciaMotor: 75, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 5, potenciaMotor: 50, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 6, potenciaMotor: 65, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 8, potenciaMotor: 90, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 4, potenciaMotor: 30, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 20, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 6, potenciaMotor: 40, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 3, potenciaMotor: 20, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 50, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 5, potenciaMotor: 10, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 7, potenciaMotor: 25, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 4, potenciaMotor: 85, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 5, potenciaMotor: 60, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 6, potenciaMotor: 30, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 7, potenciaMotor: 45, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 40, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 3, potenciaMotor: 15, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 8, potenciaMotor: 55, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 6, potenciaMotor: 35, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 7, potenciaMotor: 90, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 4, potenciaMotor: 20, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 50, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 7, potenciaMotor: 40, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 6, potenciaMotor: 35, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 7, potenciaMotor: 80, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 3, potenciaMotor: 15, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 8, potenciaMotor: 10, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 55, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 7, potenciaMotor: 20, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 4, potenciaMotor: 25, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 50, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 6, potenciaMotor: 40, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 3, potenciaMotor: 30, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 20, deckAberto: false, cabineHabitavel: false },
+            { comprimento: 7, potenciaMotor: 60, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 8, potenciaMotor: 55, deckAberto: true, cabineHabitavel: true },
+            { comprimento: 4, potenciaMotor: 45, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 7, potenciaMotor: 10, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 35, deckAberto: false, cabineHabitavel: true },
+            { comprimento: 3, potenciaMotor: 25, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 6, potenciaMotor: 45, deckAberto: true, cabineHabitavel: false },
+            { comprimento: 5, potenciaMotor: 60, deckAberto: false, cabineHabitavel: true }
+        ];
+
+        function verificarEmbarcacao(barco) {
+            const { comprimento, potenciaMotor, deckAberto, cabineHabitavel } = barco;
+            return (
+                (comprimento <= 5) ||
+                (comprimento <= 8 && deckAberto && potenciaMotor <= 50 && !cabineHabitavel) ||
+                (comprimento <= 8 && !deckAberto && potenciaMotor <= 50 && cabineHabitavel === false)
+            );
+        }
+
+        let embarcacoesMiudas = embarcacoes.filter(verificarEmbarcacao);
+
+        function mostrarResultados() {
+            const lista = document.getElementById('embarcacoes-miudas');
+            lista.innerHTML = ''; // Limpa a lista
+
+            embarcacoesMiudas.forEach((barco, index) => {
+                const item = document.createElement('li');
+                item.textContent = `Embarcação ${index + 1}: Comprimento = ${barco.comprimento}m, Potência do Motor = ${barco.potenciaMotor}HP, Convés Aberto = ${barco.deckAberto}, Cabine Habitável = ${barco.cabineHabitavel}`;
+                lista.appendChild(item);
+            });
+        }
+
+        // Executa a função de exibição ao carregar a página
+        mostrarResultados();
+    </script>
 </body>
 </html>
