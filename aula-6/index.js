@@ -25,12 +25,8 @@ app.get('/items',(req, res) => {
 
 
 
+// no terminal digite:
+// node indexedDB.js
 
-
-
-
-
-
-
-
+// Passe a url no navegador:
 // http://localhost:3000/items?salario=1000
