@@ -1,0 +1,4 @@
+A conexão com MySQL tbm funciona com o código da 'aula-8'!
+
+"npm install mysql2" para fazer o download da biblioteca do mysql no computador
+"node indexedDB.js" para rodar o servidor pelo Prompt de Comando.
