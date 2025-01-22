@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'localhost', 
     user: 'root',
     password: 'ifms',
     database: 'tads'
