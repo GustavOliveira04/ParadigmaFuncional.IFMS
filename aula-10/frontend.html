@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Bootstrap com Axios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="frontend.js" defer></script>
+</head>
+<body>
+    <h1 class="text-center">Formulário</h1>
+
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+        
+        <label for="idade" class="form-label">Idade</label>
+        <input type="text" class="form-control" id="idade" placeholder="Digite sua idade">
+        
+        <label for="profissao" class="form-label">profissão</label>
+        <input type="text" class="form-control" id="profissao" placeholder="Digite sua profissão">
+
+        <button type="button" class="btn btn-primary" id="btnSalvar">Salvar</button>
+
+            <div id= "mensagem" class="mt-3"></div>
+    </body>
+</html>

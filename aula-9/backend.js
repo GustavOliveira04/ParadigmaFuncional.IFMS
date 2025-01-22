@@ -1,9 +1,12 @@
 //npm install mysql2
 const mysql = require('mysql2')
 const express = require('express');
+const cors = require('cors');
 
-const app = express();
 const porta = 3030;
+const app = express();
+
+app.use(cors());
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -19,6 +22,19 @@ app.post('/api/dados', (req, res) => {
 
     const dados = req.body
 
+    try{
+        if(!dados.nome || typeof dados.nome !=='string' || dados.nome.trim()==='') {
+            throw new Error('Nome inválido. O nome deve ser uma string não vazia.');
+        }
+        if(!dados.idade || typeof dados.idade !== 'number' || !Number.isInteger(dados.idade) || dados.idade <= 0) {
+            throw new Error('Idade inválida. A idade deve ser um número inteiro maior que 0');
+        }
+        if(!dados.profissao || typeof dados.profissao !== 'string' || dados.profissao.trim()==='') {
+            throw new Error('Profissão inválida. A profissão deve ser uma string não vazia');            
+        }
+        // Inserção no banco de dados
+
+    
     //if
     connection.query(
         'INSERT INTO pessoa (nome, idade, profissao) VALUES (?, ?, ?)',
@@ -36,6 +52,12 @@ app.post('/api/dados', (req, res) => {
             });
         }
     );
+
+} catch (error){
+    //Retorno em caso de erro na validação
+    res.status(400).json({message:error.message});
+}
+
 });
 
 //Endpoint para buscar dados do banco de dados
