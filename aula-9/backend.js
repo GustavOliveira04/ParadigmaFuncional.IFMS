@@ -15,9 +15,12 @@ const connection = mysql.createConnection({
 });
 
 app.use(express.json());
+
 //post salvar no banco
 app.post('/api/dados', (req, res) => {
+
     const dados = req.body;
+    
     try
     {
         if(!dados.nome||typeof dados.nome !== 'string' || dados.nome.trim() ===''){
@@ -29,7 +32,8 @@ app.post('/api/dados', (req, res) => {
         if(!dados.profissao||typeof dados.profissao!=='string' || dados.profissao.trim() ===''){
             throw new Error('Profissao invalida');
         }
-
+    
+    
     connection.query(
         'INSERT INTO pessoa (nome, idade, profissao) VALUES (?,?,?)',
         [dados.nome, dados.idade,dados.profissao],
@@ -46,12 +50,14 @@ app.post('/api/dados', (req, res) => {
             });
         }
     );
-
+    
     }catch(error) {
         //retorno em caso de erro na validação
         res.status(400).json({error: error.message});
     }
+
 });
+
 //endpoint para buscar dados do banco de dados
 app.get('/api/getdados',(req, res) => {
     //realiza uma consulta ao banco
